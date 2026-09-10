@@ -27,6 +27,7 @@ async function post(path, body) {
   });
   if (res.status === 401) { handle401(); return; }
   if (!res.ok) throw new Error(`Erro ${res.status}`);
+  if (res.status === 204) return null;
   return res.json();
 }
 

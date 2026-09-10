@@ -44,7 +44,7 @@ async def simular_mensagem(payload: MensagemSimulada, db: AsyncSession = Depends
 
     protocolo = None
     if resultado.dados_demanda:
-        protocolo = await _registrar_demanda(cidadao, resultado.dados_demanda, db)
+        protocolo, _assessor, _bairro = await _registrar_demanda(cidadao, resultado.dados_demanda, db)
         resposta_final = (
             resultado.resposta_texto.replace("{protocolo}", protocolo)
             if "{protocolo}" in resultado.resposta_texto

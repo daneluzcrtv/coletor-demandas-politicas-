@@ -348,7 +348,7 @@ function TabelaAssessores() {
                   <td>
                     <div style={{ display: "flex", gap: 6, justifyContent: "flex-end" }}>
                       <button onClick={() => setModalSenha(a)} style={{ ...btnStyle, color: "var(--accent)", borderColor: "rgba(249,115,22,0.3)" }}>
-                        {a.senha_hash ? "Senha" : "Def. senha"}
+                        Def. senha
                       </button>
                       <button onClick={() => setModal(a)} style={btnStyle}>Editar</button>
                       <button onClick={() => deletar(a)} style={{ ...btnStyle, color: "#f87171", borderColor: "rgba(239,68,68,0.3)" }}>Remover</button>
