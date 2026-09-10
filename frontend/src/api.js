@@ -91,6 +91,9 @@ export const api = {
   simulador: {
     enviar: (wa_id, mensagem) => post("/simular/", { wa_id, mensagem }),
   },
+  cidadaos: {
+    listar: () => get("/cidadaos/"),
+  },
   acompanhamento: {
     listar:  (demandaId)          => get(`/acompanhamento/demanda/${demandaId}`),
     criar:   (demandaId, formData) => postForm(`/acompanhamento/demanda/${demandaId}`, formData),

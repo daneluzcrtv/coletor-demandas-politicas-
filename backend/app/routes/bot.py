@@ -134,7 +134,7 @@ async def _registrar_demanda(cidadao: Cidadao, dados: dict, db: AsyncSession):
         if coords:
             lat, lon = coords
 
-    if cidadao.nome == "Desconhecido" and dados.get("nome"):
+    if dados.get("nome"):
         cidadao.nome = dados["nome"]
     if not cidadao.endereco_texto and endereco_texto:
         cidadao.endereco_texto = endereco_texto

@@ -6,6 +6,7 @@ import Simulador from "./pages/Simulador";
 import MapaEleitoral from "./pages/MapaEleitoral";
 import AnaliseEleitoral from "./pages/AnaliseEleitoral";
 import Cadastros from "./pages/Cadastros";
+import Cidadaos from "./pages/Cidadaos";
 import Login from "./pages/Login";
 
 const PAGINAS = [
@@ -14,6 +15,7 @@ const PAGINAS = [
   { id: "analise",   label: "Análise Eleitoral",  Icon: IconAnalise   },
   { id: "relatorio", label: "Relatório Mensal",   Icon: IconRelatorio },
   { id: "historico", label: "Histórico",          Icon: IconHistorico },
+  { id: "cidadaos",  label: "Cidadãos",            Icon: IconCidadaosPage },
   { id: "simulador", label: "Simulador do Bot",   Icon: IconSimulador },
   { id: "cadastros", label: "Cadastros",          Icon: IconCadastros },
 ];
@@ -93,6 +95,7 @@ export default function App() {
         {pagina === "mapa"      && <MapaEleitoral />}
         {pagina === "analise"   && usuario.cargo === "deputado" && <AnaliseEleitoral />}
         {pagina === "relatorio" && usuario.cargo === "deputado" && <Relatorio />}
+        {pagina === "cidadaos"  && <Cidadaos />}
         {pagina === "simulador" && <Simulador />}
         {pagina === "cadastros" && usuario.cargo === "deputado" && <Cadastros />}
       </main>
@@ -168,6 +171,16 @@ function IconLogout({ size = 16 }) {
       <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
       <polyline points="16,17 21,12 16,7"/>
       <line x1="21" y1="12" x2="9" y2="12"/>
+    </svg>
+  );
+}
+
+function IconCidadaosPage({ size = 16 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+      <circle cx="9" cy="7" r="4"/>
+      <line x1="23" y1="11" x2="17" y2="11"/>
     </svg>
   );
 }
