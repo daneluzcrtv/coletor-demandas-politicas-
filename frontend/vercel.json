@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "RAILWAY_URL_PLACEHOLDER/:path*"
+      "destination": "https://coletor-demandas-politicas-production.up.railway.app/:path*"
     }
   ]
 }
