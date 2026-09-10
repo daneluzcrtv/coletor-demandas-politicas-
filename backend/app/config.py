@@ -1,4 +1,5 @@
 import os
+import sys
 from pathlib import Path
 
 # Carrega .env local se existir (desenvolvimento)
@@ -6,6 +7,14 @@ env_file = Path(".env")
 if env_file.exists():
     from dotenv import load_dotenv
     load_dotenv(env_file)
+
+# Debug temporário — remover após resolver
+print("=== DEBUG ENV ===", file=sys.stderr, flush=True)
+print(f"DATABASE_URL presente: {'DATABASE_URL' in os.environ}", file=sys.stderr, flush=True)
+print(f"ANTHROPIC_API_KEY presente: {'ANTHROPIC_API_KEY' in os.environ}", file=sys.stderr, flush=True)
+print(f"Total vars: {len(os.environ)}", file=sys.stderr, flush=True)
+print(f"Vars com DATABASE: {[k for k in os.environ if 'DATABASE' in k.upper()]}", file=sys.stderr, flush=True)
+print("=== END DEBUG ===", file=sys.stderr, flush=True)
 
 
 class Settings:
