@@ -42,8 +42,8 @@ O campo "resumo" deve ter no máximo 10 palavras descrevendo o pedido.
 Regras:
 - Se o cidadão compartilhar localização GPS, use as coordenadas e deixe endereco_texto como null.
 - Se digitar endereço em texto, use endereco_texto e deixe latitude/longitude como null.
-- Depois do bloco <REGISTRAR>, informe o número do protocolo que será gerado e diga que \
-  o assessor da região vai entrar em contato.
+- Depois do bloco <REGISTRAR>, use exatamente o texto "{protocolo}" onde o número deve aparecer. \
+  Exemplo: "Seu protocolo é #{protocolo}. O assessor da região vai entrar em contato em breve."
 - Se o cidadão mandar mensagem fora do contexto, redirecione gentilmente para o fluxo.
 - Nunca invente dados. Se não souber algo, pergunte."""
 
