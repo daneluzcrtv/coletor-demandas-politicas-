@@ -54,7 +54,10 @@ export default function App() {
         </div>
 
         <nav className="sidebar-nav">
-          {PAGINAS.filter(p => p.id !== "cadastros" || usuario.cargo === "deputado").map(({ id, label, Icon }) => (
+          {PAGINAS.filter(p => {
+            const soDeputado = ["cadastros", "analise", "relatorio"];
+            return !soDeputado.includes(p.id) || usuario.cargo === "deputado";
+          }).map(({ id, label, Icon }) => (
             <button
               key={id}
               className={`nav-link ${pagina === id ? "active" : ""}`}
@@ -88,8 +91,8 @@ export default function App() {
         {pagina === "demandas"  && <ListaDemandas />}
         {pagina === "historico" && <Historico />}
         {pagina === "mapa"      && <MapaEleitoral />}
-        {pagina === "analise"   && <AnaliseEleitoral />}
-        {pagina === "relatorio" && <Relatorio />}
+        {pagina === "analise"   && usuario.cargo === "deputado" && <AnaliseEleitoral />}
+        {pagina === "relatorio" && usuario.cargo === "deputado" && <Relatorio />}
         {pagina === "simulador" && <Simulador />}
         {pagina === "cadastros" && usuario.cargo === "deputado" && <Cadastros />}
       </main>
