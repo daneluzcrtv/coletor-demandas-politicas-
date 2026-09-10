@@ -90,7 +90,8 @@ export const api = {
     simular:   (bairro, acao) => get("/analise/simular", { bairro, acao }),
   },
   simulador: {
-    enviar: (wa_id, mensagem) => post("/simular/", { wa_id, mensagem }),
+    enviar:         (wa_id, mensagem) => post("/simular/", { wa_id, mensagem }),
+    limparHistorico: (wa_id)          => del(`/simular/historico/${wa_id}`),
   },
   cidadaos: {
     listar: () => get("/cidadaos/"),

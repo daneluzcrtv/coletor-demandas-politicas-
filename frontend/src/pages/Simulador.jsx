@@ -62,8 +62,9 @@ export default function Simulador() {
     }
   }
 
-  function limpar() {
+  async function limpar() {
     setMensagens([]);
+    await api.simulador.limparHistorico(WA_ID_TESTE).catch(() => {});
   }
 
   function carregarExemplo() {

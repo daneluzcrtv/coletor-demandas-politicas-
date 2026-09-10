@@ -2,7 +2,7 @@ from typing import Optional
 
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel
-from sqlalchemy import select
+from sqlalchemy import select, delete
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_db
@@ -62,6 +62,16 @@ async def simular_mensagem(payload: MensagemSimulada, db: AsyncSession = Depends
         demanda_registrada=resultado.dados_demanda is not None,
         protocolo=protocolo,
     )
+
+
+@router.delete("/historico/{wa_id}", status_code=204)
+async def limpar_historico(wa_id: str, db: AsyncSession = Depends(get_db)):
+    """Apaga todo o histórico de conversa de um wa_id (usado pelo simulador)."""
+    result = await db.execute(select(Cidadao).where(Cidadao.wa_id == wa_id))
+    cidadao = result.scalar_one_or_none()
+    if cidadao:
+        await db.execute(delete(InteracaoBot).where(InteracaoBot.cidadao_id == cidadao.id))
+        await db.commit()
 
 
 @router.get("/historico/{wa_id}")
