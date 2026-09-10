@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { api } from "../api";
 
 const WA_ID_TESTE = "5500000000000";
 
@@ -42,12 +43,7 @@ export default function Simulador() {
     setEnviando(true);
 
     try {
-      const res = await fetch("/api/simular/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ wa_id: WA_ID_TESTE, mensagem: texto }),
-      });
-      const dados = await res.json();
+      const dados = await api.simulador.enviar(WA_ID_TESTE, texto);
 
       setMensagens((prev) => [
         ...prev,

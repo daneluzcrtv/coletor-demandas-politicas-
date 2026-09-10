@@ -88,6 +88,9 @@ export const api = {
     eleitoral: (mes)         => get("/analise/eleitoral", { mes }),
     simular:   (bairro, acao) => get("/analise/simular", { bairro, acao }),
   },
+  simulador: {
+    enviar: (wa_id, mensagem) => post("/simular/", { wa_id, mensagem }),
+  },
   acompanhamento: {
     listar:  (demandaId)          => get(`/acompanhamento/demanda/${demandaId}`),
     criar:   (demandaId, formData) => postForm(`/acompanhamento/demanda/${demandaId}`, formData),
